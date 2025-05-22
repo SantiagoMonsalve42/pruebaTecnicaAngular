@@ -27,8 +27,13 @@
                     Profesor: {{materia.nombreProfe}}
                     <br>
                     Creditos: {{materia.creditos}}
-                    <button type="button" class="btn btn-primary btn-sm"
-                    (click)="redirectToDetail(materia.id)">Ver Detalle</button>
+                    <div>
+
+                        <button type="button" class="btn btn-danger btn-sm m-1"
+                        (click)="desasignarMateria(materia.id)">Desasignar</button>
+                        <button type="button" class="btn btn-primary btn-sm"
+                        (click)="redirectToDetail(materia.id)">Ver Detalle</button>
+                    </div>
                 </li>
                 </ul>
             </div>

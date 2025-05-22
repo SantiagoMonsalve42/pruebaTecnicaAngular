@@ -14,6 +14,9 @@ export class CoreService {
   asignarMateria(idMateria: number, idEstudiante: number): Observable<IAsignarMateriaResponse>{
       return this._http.post<IAsignarMateriaResponse>(`${this.baseUrl}Estudiante/AsignarMateria/${idMateria}/idEstudiante/${idEstudiante}`,{});
   }
+  desasignarMateria(idMateria: number, idEstudiante: number): Observable<IAsignarMateriaResponse>{
+      return this._http.delete<IAsignarMateriaResponse>(`${this.baseUrl}Estudiante/DesasignarMateria/${idMateria}/idEstudiante/${idEstudiante}`,{});
+  }
   detalleEstudiante(idEstudiante: number): Observable<IDetalleEstudianteDetalleResponse>{
     return this._http.post<IDetalleEstudianteDetalleResponse>(`${this.baseUrl}Estudiante/Detalle/${idEstudiante}`,{});
   }
