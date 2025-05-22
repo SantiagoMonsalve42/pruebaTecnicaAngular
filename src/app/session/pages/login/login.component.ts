@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SessionService } from '../../services/session.service';
 import { AlertsService } from 'src/app/comun/services/alerts.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent{
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private sessionService: SessionService) {
+              private sessionService: SessionService,
+            private router: Router) {
     this.loginForm = this.fb.group({
       email: [
         '',
@@ -44,8 +46,10 @@ export class LoginComponent{
               username: this.loginForm.get('email')?.value,
               password: this.loginForm.get('password')?.value,
           }).subscribe({next: (response) => {
+            this.sessionService.setToken(response.data.token);
             AlertsService.SuccessAlert("Login", "Login Correcto");
             this.loginForm.reset();
+            this.router.navigate(['/core']); 
       },
       error: (error) => {
         AlertsService.ErrorAlert("Error",error?.error?.error ?? error.message);

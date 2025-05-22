@@ -4,12 +4,17 @@ import { MainContainerComponent } from './pages/main-container/main-container.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { InfoComponent } from './pages/info/info.component';
+import { SesionGuard } from '../comun/guards/sesion.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     component: MainContainerComponent,
+    canActivate: [SesionGuard],
+    canActivateChild: [SesionGuard],
+    canLoad: [SesionGuard],
+    runGuardsAndResolvers: 'always',
     children:[
       {
         path: 'profile',
