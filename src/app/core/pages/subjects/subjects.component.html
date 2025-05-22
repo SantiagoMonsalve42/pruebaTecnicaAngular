@@ -1,1 +1,32 @@
-<p>subjects works!</p>
+<div class="container">
+    <div class="row p-5">
+        <div class="col-12">
+            <h2 class="fw-bold text-primary">Materias disponibles:</h2>
+            <p>Aca encontrarás el listado completo de materias ofertadas este semestre.</p>
+        </div>
+    </div>   
+    <div class="row">
+        <div *ngIf="materias.length > 0;else other_content">
+                <h5>Materias Asignadas:</h5>
+                <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let materia of materias">
+                    Nombre: {{materia.nombre}}
+                    <br>
+                    Profesor: {{materia.nombreProfe}}
+                    <br>
+                    Creditos: {{materia.creditos}}
+                    <div>
+                    <button type="button" 
+                            class="btn btn-primary btn-sm m-1"
+                            (click)="AsignarMateria(materia.id)">Asignar</button>
+                    <button type="button" 
+                            class="btn btn-info btn-sm">Ver Detalle</button>
+                    </div>
+                    
+                </li>
+                </ul>
+            </div>
+            <ng-template #other_content>No hay materias asignadas.</ng-template>
+    </div>
+</div>      

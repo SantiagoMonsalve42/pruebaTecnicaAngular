@@ -47,6 +47,7 @@ export class LoginComponent{
               password: this.loginForm.get('password')?.value,
           }).subscribe({next: (response) => {
             this.sessionService.setToken(response.data.token);
+            this.sessionService.setIdEstudiante(response.data.idEstudiante);
             AlertsService.SuccessAlert("Login", "Login Correcto");
             this.loginForm.reset();
             this.router.navigate(['/core']); 

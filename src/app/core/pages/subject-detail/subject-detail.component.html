@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row p-5">
+        <div class="col-12">
+            <h2 class="fw-bold text-primary">Informacion de materias:</h2>
+            <p><strong>Nombre: </strong>{{detalleMateria?.nombre}}</p>
+            <p><strong>Creditos: </strong>{{detalleMateria?.creditos}}</p>
+        </div>
+    </div>   
+    <div class="row">
+        <div *ngIf="estudiantes.length > 0;else other_content">
+                <h5>Alumnos Matriculados:</h5>
+                <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let estudiante of detalleMateria.estudiantes">
+                    Nombre: {{estudiante.nombre}}
+                    <br>
+                    Apellido: {{estudiante.apellido}}
+                    <br>
+                    Correo: {{estudiante.email}}
+                </li>
+                </ul>
+            </div>
+            <ng-template #other_content>No hay materias asignadas.</ng-template>
+    </div>
+</div>      

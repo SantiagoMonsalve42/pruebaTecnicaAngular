@@ -22,4 +22,10 @@ export class SessionService {
   static getToken(): string | null{
     return sessionStorage.getItem("token");
   }
+  setIdEstudiante(token :number): void{
+    sessionStorage.setItem("idEstudiante",token.toString());
+  }
+  static getIdEstudiante(): number | null{
+    return Number.parseInt(sessionStorage.getItem("idEstudiante")??"0");
+  }
 }

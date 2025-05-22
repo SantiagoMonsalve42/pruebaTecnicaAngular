@@ -7,6 +7,9 @@ import { MainContainerComponent } from './pages/main-container/main-container.co
 import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InfoComponent } from './pages/info/info.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpBasicInterceptor } from './interceptor/http.interceptor';
+import { SubjectDetailComponent } from './pages/subject-detail/subject-detail.component';
 
 
 @NgModule({
@@ -15,11 +18,17 @@ import { InfoComponent } from './pages/info/info.component';
     MainContainerComponent,
     SubjectsComponent,
     NavbarComponent,
-    InfoComponent
+    InfoComponent,
+    SubjectDetailComponent
   ],
   imports: [
     CommonModule,
     CoreRoutingModule
-  ]
+  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpBasicInterceptor,
+    multi: true,
+  }],
 })
 export class CoreModule { }

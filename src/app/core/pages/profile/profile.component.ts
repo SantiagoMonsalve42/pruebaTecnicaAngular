@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CoreService } from '../../services/core.service';
+import { IDetalleEstudianteDetalleResponse } from '../../interfaces/core.interfaces';
+import { SessionService } from 'src/app/session/services/session.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  idEstudiante: number = 0;
+  estudiante: any;
+  constructor(private _coreService: CoreService) { }
 
   ngOnInit(): void {
+    this.idEstudiante =SessionService.getIdEstudiante()??0;
+    this.detalleEstudiante(this.idEstudiante);
   }
-
+  detalleEstudiante(idEstudiante: number) {
+    this._coreService.detalleEstudiante(idEstudiante).subscribe(
+      response => {
+        this.estudiante = response.data;
+      },
+      error => {
+        console.error('Error al obtener detalle del estudiante:', error);
+      }
+    );
+  }
 }

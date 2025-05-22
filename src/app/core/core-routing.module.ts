@@ -5,6 +5,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { InfoComponent } from './pages/info/info.component';
 import { SesionGuard } from '../comun/guards/sesion.guard';
+import { SubjectDetailComponent } from './pages/subject-detail/subject-detail.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
       {
         path: 'subjects',
         component: SubjectsComponent
+      },
+      
+      {
+        path: 'subjects/:id',
+        component: SubjectDetailComponent
       },
       {
         path: 'info',

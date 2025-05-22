@@ -12,24 +12,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  redirectToProfile(caso:number) {
-    switch(caso) {
-      case 1:
-        this.router.navigate(['/core/profile']);
-        break;
-      case 2:     
-        this.router.navigate(['/core/subjects']);
-        break;
-      case 3:     
-        this.router.navigate(['/core/info']);
-        break;
-      case 4:     
-        sessionStorage.clear();
+  redirectToProfile() {
+     sessionStorage.clear();
         this.router.navigate(['/session/login']);
-        break;
-      default:
-        console.log("No se ha encontrado la ruta");
-        break;
-    }
+    
   }
 }
