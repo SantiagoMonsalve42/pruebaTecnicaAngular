@@ -41,5 +41,8 @@ export class SubjectsComponent implements OnInit {
       AlertsService.ErrorAlert("ERROR",error.error.message);
     });
   }
+  redirectToDetail(id:number) {
+    this.router.navigate(['/core/subjects/'+id]);
+  }
 
 }
