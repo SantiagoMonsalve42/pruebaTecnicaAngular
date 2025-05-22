@@ -1,0 +1,6 @@
+.fixed-card-size {
+    height: 500px; /* Altura fija */
+    width: 100%; /* Ancho relativo al contenedor */
+    max-width: 100%; /* Ancho máximo */
+    overflow-y: auto; /* Habilita el scroll si el contenido excede el tamaño */
+  }

@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm fixed-card-size h-auto">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4">Iniciar Sesión</h5>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="Ingresa tu correo"
+                />
+                <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+                  <small *ngIf="loginForm.get('email')?.errors?.['required']">El correo es obligatorio.</small>
+                  <small *ngIf="loginForm.get('email')?.errors?.['email']">El correo no es válido.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  formControlName="password"
+                  placeholder="Ingresa tu contraseña"
+                />
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+                  <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                    La contraseña debe tener al menos 8 caracteres.
+                  </small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
+                    La contraseña debe incluir 
+                    al menos una letra mayúscula, 
+                    una minúscula, un número 
+                    y un carácter especial.
+                  </small>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+            </form>
+            <div class="text-center mt-3">
+                <a routerLink="/session/signup" class="text-decoration-none">¿No tienes una cuenta? Regístrate</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
